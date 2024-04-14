@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Specify character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design viewport settings -->
+    <title>User List</title> <!-- Page title -->
+    <link href="/list-style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>User List</h1> <!-- Heading -->
+
+        <!-- Link to add a new user -->
+        <a href="/users/new" class="add-user-btn">Add User</a> <!-- Add User button -->
+
+        <!-- Table to display user information -->
+        <table>
+            <tr>
+                <th>Name</th> <!-- Table header for name -->
+                <th>Age</th> <!-- Table header for age -->
+                <th>Email</th> <!-- Table header for email -->
+                <th class="actions">Actions</th> <!-- Table header for actions -->
+            </tr>
+
+            <!-- Loop through each user and display their information -->
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.name %></td> <!-- Display user's name -->
+                    <td><%= user.age %></td> <!-- Display user's age -->
+                    <td><%= user.email %></td> <!-- Display user's email -->
+
+                    <!-- Actions column with edit and delete links -->
+                    <td class="actions">
+                        <a href="/users/<%= user._id %>/edit">Edit</a> <!-- Edit user link -->
+                        <!-- Form for deleting user -->
+                        <form action="/users/<%= user._id %>?_method=DELETE" method="post">
+                            <button type="submit" class="delete-btn">Delete</button> <!-- Delete user button -->
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+</html>

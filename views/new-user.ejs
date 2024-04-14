@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Specify character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design viewport settings -->
+    <title>Create New User</title> <!-- Page title -->
+    <link href="/form-style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+    <h1>Create New User</h1> <!-- Heading -->
+
+    <!-- User creation form -->
+    <form action="/users" method="post">
+        <!-- Input field for name -->
+        <div>
+            <label for="name">Name:</label> <!-- Label for name input -->
+            <input type="text" id="name" name="name" required> <!-- Name input field -->
+        </div>
+
+        <!-- Input field for age -->
+        <div>
+            <label for="age">Age:</label> <!-- Label for age input -->
+            <input type="number" id="age" name="age" required> <!-- Age input field -->
+        </div>
+
+        <!-- Input field for email -->
+        <div>
+            <label for="email">Email:</label> <!-- Label for email input -->
+            <input type="email" id="email" name="email" required> <!-- Email input field -->
+        </div>
+
+        <!-- Button to submit the form -->
+        <button type="submit">Create User</button> <!-- Submit button -->
+    </form>
+
+    <!-- Display validation errors if any -->
+    <% if (errors) { %>
+        <div class="error">
+            <h3>Error(s):</h3> <!-- Heading for errors -->
+            <ul>
+                <!-- List to display individual errors -->
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li> <!-- Display error message -->
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+</div>
+</body>
+</html>
